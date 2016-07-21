@@ -1,4 +1,4 @@
-package br.com.ciandt.dojo.myapplication;
+package br.com.ciandt.dojo.myapplication.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+import br.com.ciandt.dojo.myapplication.R;
 
 public class MainActivity extends AppCompatActivity {
 
