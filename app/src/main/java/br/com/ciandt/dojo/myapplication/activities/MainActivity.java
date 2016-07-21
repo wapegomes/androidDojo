@@ -1,36 +1,34 @@
 package br.com.ciandt.dojo.myapplication.activities;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ImageView;
-
-import com.squareup.picasso.Picasso;
-
-import java.util.Timer;
-import java.util.TimerTask;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import br.com.ciandt.dojo.myapplication.R;
+import br.com.ciandt.dojo.myapplication.adapters.CharacterAdapter;
+import br.com.ciandt.dojo.myapplication.mock.Mock;
 
 public class MainActivity extends AppCompatActivity {
+
+    private RecyclerView recyclerView;
+    private CharacterAdapter characterAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.splash);
+        setContentView(R.layout.activity_pergonagem);
 
-        ImageView img = (ImageView) findViewById(R.id.img_splah);
-        Picasso.with(this).load(R.mipmap.ic_launcher).into(img);
+        int collum = getResources().getInteger(R.integer.personagem_collum);
 
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                finish();
-                Intent intent = new Intent(MainActivity.this, PergonagemActivity.class);
-                startActivity(intent);
+        GridLayoutManager layoutManager =
+                new GridLayoutManager(this, collum);
 
-            }
-        }, 3000);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler);
+        recyclerView.setLayoutManager(layoutManager);
+
+        characterAdapter = new CharacterAdapter(this, Mock.getCharacters(),recyclerView);
+        recyclerView.setAdapter(characterAdapter);
 
 
     }
