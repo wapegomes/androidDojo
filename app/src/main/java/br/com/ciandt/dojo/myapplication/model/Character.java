@@ -1,12 +1,13 @@
 package br.com.ciandt.dojo.myapplication.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by wgomes on 12/07/16.
  */
 
-public class Character {
+public class Character implements Serializable{
 
     public String id;
     public String name;

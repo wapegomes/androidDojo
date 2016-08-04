@@ -1,6 +1,7 @@
 package br.com.ciandt.dojo.myapplication.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import br.com.ciandt.dojo.myapplication.R;
+import br.com.ciandt.dojo.myapplication.activities.CharacterDetailActivity;
 import br.com.ciandt.dojo.myapplication.model.Character;
 
 /**
@@ -75,7 +77,12 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.View
             @Override
             public void onClick(View v) {
 
+                int position = recyclerView.getChildAdapterPosition(v);
 
+                Intent intent = new Intent(context,CharacterDetailActivity.class);
+                intent.putExtra("character",characters.get(position));
+
+                context.startActivity(intent);
 
             }
         };
